@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .box {
+                color: white;
+                height: 20px;
+                width: 20px;
+                border: grey 0.5px solid;
+                display: inline-block;
+            }
+
+            .row {
+                display: block;
+                width: 100%;
+                height: 20px;
+            }
+
+            .colorButton {
+                border-style: solid;
+                border-color: black;
+                border-width: 1px;
+                display: unset;
+                margin: 2px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div id="grid"></div>
+
+        <div id="blue" class="colorButton">Blue</div>
+        <div id="red" class="colorButton">Red</div>
+        <div id="orange" class="colorButton">Orange</div>
+        <div id="yellow" class="colorButton">Yellow</div>
+        <div id="green" class="colorButton">Green</div>
+        <div id="purple" class="colorButton">Purple</div>
+        <div id="brown" class="colorButton">Brown</div>
+        <div id="gray" class="colorButton">Gray</div>
+        <div id="black" class="colorButton">Black</div>
+        <div id="white" class="colorButton">White</div>
+
+        <script type="text/javascript">
+
+            (function () {
+
+            let selectedColor = "white";
+
+            //Make grid
+            for (var i = 0; i < 20; i++){
+                var row = document.createElement('div');
+                row.className = "row";
+
+                for (var j = 0; j < 55; j++) {
+                    var box = document.createElement('div');
+                    box.className = 'box'
+                    row.appendChild(box);
+                }
+                document.getElementById('grid').appendChild(row);
+            }
+
+            document.getElementById("grid").addEventListener("click", event => {
+                event.target.style.backgroundColor = selectedColor;
+            });
+
+            //Color buttons event listeners
+            document.querySelectorAll('.colorButton').forEach(color => {
+                color.addEventListener('click', event => {
+                    selectedColor = event.target.id;
+                })
+            });
+        })();
+
+        </script>
+    </body>
+</html>
